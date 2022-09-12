@@ -1,5 +1,6 @@
 describe("", function () {
     it("should print JWT", async function () {
-        console.log(process.env.JWT);
+        const variable = process.env.JWT;
+        console.log(variable);
     });
 });
