@@ -1,0 +1,19 @@
+name: Test action
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      JWT: ${{secrets.JWT}}
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install -g mocha dotenv
+      - run: npm i
+        working-directory: ./tests
+      - run: npm test
+        working-directory: ./tests

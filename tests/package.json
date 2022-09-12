@@ -1,0 +1,9 @@
+{
+  "name": "github-actions",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "mocha -r dotenv/config",
+    "local": "DOTENV_CONFIG_PATH=.env.local mocha -r dotenv/config",
+    "todo": "IGNORE_MISSED=1 DOTENV_CONFIG_PATH=.env.local mocha -r dotenv/config --grep @todo"
+  }
+}
