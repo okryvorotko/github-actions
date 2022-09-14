@@ -15,5 +15,5 @@ jobs:
       - run: npm install -g mocha dotenv
       - run: npm i
         working-directory: ./tests
-      - run: npm test
+      - run: npm run all-reporter
         working-directory: ./tests

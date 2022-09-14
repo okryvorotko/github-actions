@@ -2,8 +2,13 @@
   "name": "github-actions",
   "version": "1.0.0",
   "scripts": {
-    "test": "mocha -r dotenv/config",
+    "all": "mocha -r dotenv/config",
+    "all-reporter": "mocha --reporter reporter.js",
     "local": "DOTENV_CONFIG_PATH=.env.local mocha -r dotenv/config",
-    "todo": "IGNORE_MISSED=1 DOTENV_CONFIG_PATH=.env.local mocha -r dotenv/config --grep @todo"
+    "todo:local": "IGNORE_MISSED=1 DOTENV_CONFIG_PATH=.env.local mocha -r dotenv/config --grep @todo --reporter reporter.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.2",
+    "mocha": "^10.0.0"
   }
 }
