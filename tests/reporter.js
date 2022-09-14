@@ -45,8 +45,7 @@ class Reporter {
                 this.addFailed(test, err);
                 console.log(`${this.indent()}${red}✗ ${resetColor}${test.title}`);
                 console.log(`${red}${this.indent()}  Error: ${err.message}${resetColor}`);
-                console.log(`${grey}${this.indent()}  Stacktrace: ${err.stack}`);
-                console.log(resetColor);
+                console.log(`${grey}${this.indent()}  Stacktrace: ${err.stack}${resetColor}`);
             })
             .on(EVENT_TEST_PENDING, test => {
                 this.addSkipped(test);
