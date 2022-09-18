@@ -17,7 +17,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm install -g mocha dotenv
+      - run: echo "file=test/${{inputs.file}}" >> $GITHUB_ENV
       - run: npm i
         working-directory: ./tests
-      - run: npm run all-reporter ${{ inputs.file && 'test/', inputs.file || '' }}
+      #- run: npm run all-reporter ${{ inputs.file && 'test/', inputs.file || '' }}
+      - run: npm run all-reporter ${{ inputs.file && file || '' }}
         working-directory: ./tests
