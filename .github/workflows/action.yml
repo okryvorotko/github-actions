@@ -19,5 +19,5 @@ jobs:
       - run: npm install -g mocha dotenv
       - run: npm i
         working-directory: ./tests
-      - run: npm run all-reporter ${{ 'test/'inputs.file && inputs.file || '' }}
+      - run: npm run all-reporter ${{ 'test/${{inputs.file}}' && inputs.file || '' }}
         working-directory: ./tests
