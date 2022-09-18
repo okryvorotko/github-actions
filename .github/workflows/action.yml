@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       file:
-        description: 'Run single or multiple files. Input example: scenario.test.js, source.test.js'
+        description: 'Run single file. Input example: "scenario.test.js" or "scenario.test" without quotes'
         required: false
 
 jobs:
@@ -17,9 +17,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm install -g mocha dotenv
+      - name: append 'test/' folder to the file name
       - run: echo "file=test/${{inputs.file}}" >> $GITHUB_ENV
       - run: npm i
-        working-directory: ./tests
-      #- run: npm run all-reporter ${{ inputs.file && 'test/', inputs.file || '' }}
+        working-directory: ./tests/test
       - run: npm run all-reporter ${{ inputs.file && env.file || '' }}
-        working-directory: ./tests
+        working-directory: ./tests/test
