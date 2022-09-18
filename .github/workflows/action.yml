@@ -2,6 +2,10 @@ name: Test action
 
 on:
   workflow_dispatch:
+    inputs:
+      file:
+        description: 'Run single or multiple files. Input example: scenario.test.js, source.test.js'
+        required: false
 
 jobs:
   build:
@@ -15,5 +19,5 @@ jobs:
       - run: npm install -g mocha dotenv
       - run: npm i
         working-directory: ./tests
-      - run: npm run all-reporter
+      - run: npm run all-reporter ${{ inputs.file && inputs.file || '' }}
         working-directory: ./tests

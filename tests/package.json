@@ -4,8 +4,9 @@
   "scripts": {
     "all": "mocha -r dotenv/config",
     "all-reporter": "mocha --reporter reporter.js",
+    "exclude": "mocha -g '@exclude|@exclude2' -i --reporter reporter.js",
     "local": "DOTENV_CONFIG_PATH=.env.local mocha -r dotenv/config",
-    "todo:local": "IGNORE_MISSED=1 DOTENV_CONFIG_PATH=.env.local mocha -r dotenv/config --grep @todo --reporter reporter.js"
+    "todo:local": "DOTENV_CONFIG_PATH=.env.local mocha -r dotenv/config --grep @todo --reporter reporter.js"
   },
   "dependencies": {
     "dotenv": "^16.0.2",

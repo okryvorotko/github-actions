@@ -5,7 +5,7 @@ describe("Pass/fail/skip tests @include", function () {
     });
 
     let flag = 1;
-    it("should retry and pass", async function () {
+    it("should retry and pass @todo", async function () {
         this.retries(5);
         try {
             if (flag !== 3) throw Error("First try error");
