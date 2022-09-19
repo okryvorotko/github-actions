@@ -23,3 +23,10 @@ jobs:
         working-directory: ./tests/test
       - run: npm run all-reporter ${{ inputs.file && env.file || '' }}
         working-directory: ./tests/test
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: 'https://hooks.slack.com/services/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'
+          SLACK_TITLE: 'Job finished'
+          SLACK_MESSAGE: ${{env.TMP_URL}}
+          CUSTOM: "Custom text"
