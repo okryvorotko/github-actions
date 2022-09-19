@@ -31,6 +31,6 @@ jobs:
           SLACK_TITLE: 'Job failed'
           SLACK_MESSAGE: >
               <https://github.com/okryvorotko/github-actions/actions/runs/${{github.run_id}}|Action URL>
-              /n*Branch*: ${{github.ref_name}}
+              "\n*Branch*: ${{github.ref_name}}"
           MSG_MINIMAL: true
           SLACK_USERNAME: github
