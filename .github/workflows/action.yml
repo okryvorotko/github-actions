@@ -1,6 +1,8 @@
 name: Test action
 
 on:
+  schedule:
+    - cron: '*/5 * * * *'
   pull_request:
     types: [ opened, reopened ]
   workflow_dispatch:
@@ -33,9 +35,7 @@ jobs:
           SLACK_TITLE: 'Job failed'
           SLACK_MESSAGE: >
               *Action:* <https://github.com/okryvorotko/github-actions/actions/runs/${{github.run_id}}|URL>,
-              *Ref:* ${{github.ref_name}},
-              *Base ref:* ${{github.base_ref}},
-              *Head ref:* ${{github.head_ref}},
+              *Branch:* ${{github.base_ref}},
               *Event:* ${{github.event_name}}
           MSG_MINIMAL: true
           SLACK_USERNAME: github
