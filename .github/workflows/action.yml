@@ -1,6 +1,8 @@
 name: Test action
 
 on:
+  pull_request:
+    types: [ opened, reopened ]
   workflow_dispatch:
     inputs:
       file:
@@ -30,8 +32,10 @@ jobs:
           SLACK_WEBHOOK: 'https://hooks.slack.com/services/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'
           SLACK_TITLE: 'Job failed'
           SLACK_MESSAGE: >
-              *Action:* <https://github.com/okryvorotko/github-actions/actions/runs/${{github.run_id}}|URL>
-              *Branch:* ${{github.ref_name}}
+              *Action:* <https://github.com/okryvorotko/github-actions/actions/runs/${{github.run_id}}|URL>,
+              *Ref:* ${{github.ref_name}},
+              *Base ref:* ${{github.base_ref}},
+              *Head ref:* ${{github.head_ref}},
               *Event:* ${{github.event_name}}
           MSG_MINIMAL: true
           SLACK_USERNAME: github
