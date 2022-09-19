@@ -23,6 +23,11 @@ describe("Pass/fail/skip tests @include", function () {
         throw Error("Error message 2");
     });
 
+    it("should write to file", async function () {
+        const fs = require('fs');
+        fs.writeFileSync("testrail_run_url", "https://trackerdetect.testrail.io/index.php?/runs/view/1074");
+    });
+
     it.skip("should skip test", async function () {
         throw Error("Should be skipped");
     });

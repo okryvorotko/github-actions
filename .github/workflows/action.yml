@@ -27,6 +27,12 @@ jobs:
         working-directory: ./tests/test
       - run: npm run all-reporter ${{ inputs.file && env.file || '' }}
         working-directory: ./tests/test
+
+      - name: Set variables
+        run: |
+          VER=$(cat tests/test/testrail_run_url)
+          echo "RUN_URL=$RUN" >> $GITHUB_ENV
+
       - name: Slack Notification
         if: always()
         uses: rtCamp/action-slack-notify@v2
@@ -36,6 +42,7 @@ jobs:
           SLACK_MESSAGE: >
               *Action:* <https://github.com/okryvorotko/github-actions/actions/runs/${{github.run_id}}|URL>,
               *Branch:* ${{github.ref_name}},
-              *Event:* ${{github.event_name}}
+              *Event:* ${{github.event_name}},
+              *Test Run:* ${{env.RUN_URL}}
           MSG_MINIMAL: true
           SLACK_USERNAME: github
