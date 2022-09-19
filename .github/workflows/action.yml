@@ -44,6 +44,6 @@ jobs:
               *Action:* <https://github.com/okryvorotko/github-actions/actions/runs/${{github.run_id}}|URL>,
               *Branch:* ${{github.ref_name}},
               *Event:* ${{github.event_name}},
-              *Test Run:* ${{env.RUN_URL}}
+              *Test Run:* <${{env.RUN_URL}}|URL>
           MSG_MINIMAL: true
           SLACK_USERNAME: github
