@@ -29,6 +29,6 @@ jobs:
         env:
           SLACK_WEBHOOK: 'https://hooks.slack.com/services/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'
           SLACK_TITLE: 'Job failed'
-          SLACK_MESSAGE: <https://github.com/okryvorotko/github-actions/actions/runs/${{github.run_id}}|Action URL>\nRef&#58; ${{github.ref_name}}
+          SLACK_MESSAGE: <https://github.com/okryvorotko/github-actions/actions/runs/${{github.run_id}}|Action URL>\nRef ${{github.ref_name}}
           MSG_MINIMAL: true
-          SLACK_USERNAME: github
+          SLACK_USERNAME: github\
