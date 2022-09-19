@@ -29,6 +29,6 @@ jobs:
         env:
           SLACK_WEBHOOK: 'https://hooks.slack.com/services/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'
           SLACK_TITLE: 'Job finished'
-          SLACK_MESSAGE: https://github.com/okryvorotko/github-actions/actions/runs/$GITHUB_RUN_ID
+          SLACK_MESSAGE: https://github.com/okryvorotko/github-actions/actions/runs/${{job.GITHUB_RUN_ID}}
           MSG_MINIMAL: true
           SLACK_USERNAME: github
