@@ -53,3 +53,4 @@ jobs:
           MSG_MINIMAL: true
           SLACK_USERNAME: github
           SLACK_FOOTER: ${{github.event_name}}
+          SLACK_COLOR: ${{job.status}}
