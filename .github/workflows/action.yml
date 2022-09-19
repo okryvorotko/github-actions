@@ -29,7 +29,8 @@ jobs:
         working-directory: ./tests/test
 
       - name: Set variables
-        run: |
+      - if: always()
+      - run: |
           VER=$(cat tests/test/testrail_run_url)
           echo "RUN_URL=$RUN" >> $GITHUB_ENV
 
