@@ -49,10 +49,7 @@ jobs:
           SLACK_MESSAGE: >
               *Action:* <https://github.com/okryvorotko/github-actions/actions/runs/${{github.run_id}}|${{github.workflow}}>,
               *Branch:* ${{github.ref_name}},
-              *Event:* ${{github.event_name}},
-              *Test Run:* <${{env.RUN_URL}}|URL>,
-              *Passing:* ${{env.PASSING}},
-              *Failing:* ${{env.FAILING}},
-              *Skipped:* ${{env.SKIPPED}}
+              *Test Run:* <${{env.RUN_URL}}|URL>
           MSG_MINIMAL: true
           SLACK_USERNAME: github
+          SLACK_FOOTER: ${{github.event_name}}
