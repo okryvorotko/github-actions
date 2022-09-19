@@ -36,6 +36,6 @@ jobs:
               *Ref:* ${{github.ref_name}},
               *Base ref:* ${{github.base_ref}},
               *Head ref:* ${{github.head_ref}},
-              *Event:* ${{github.event_name}}
+              *Event:* ${{github.event_name}} 
           MSG_MINIMAL: true
           SLACK_USERNAME: github
