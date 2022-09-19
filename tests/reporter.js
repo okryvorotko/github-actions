@@ -56,7 +56,13 @@ class Reporter {
                 console.log(`${yellow}${this.indent()}-retrying ${resetColor}${test.title}`);
             })
             .once(EVENT_RUN_END, () => {
-                const fs = require('fs');
+                try {
+                    fs.writeFileSync("passing", `${stats.passes}`);
+                    fs.writeFileSync("failing", `${stats.failures}`);
+                    fs.writeFileSync("skipped", `${stats.pending}`);
+                } catch (e) {
+                    console.error(e);
+                }
 
                 console.log(`\n\n ${stats.passes + stats.failures} total(excluding ${stats.pending} skipped) ${grey}(${stats.duration}ms)${resetColor}`);
                 console.log(`${green} ${stats.passes} passing${resetColor}`);
@@ -69,9 +75,8 @@ class Reporter {
                     this.printFailed(this._failed, red);
                 }
 
-                fs.writeFileSync("passing", stats.passes);
-                fs.writeFileSync("failing", stats.failures);
-                fs.writeFileSync("skipped", stats.pending);
+
+
             });
     }
 
