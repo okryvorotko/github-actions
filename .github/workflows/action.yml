@@ -36,6 +36,7 @@ jobs:
               *Ref:* ${{github.ref_name}},
               *Base ref:* ${{github.base_ref}},
               *Head ref:* ${{github.head_ref}},
-              *Event:* ${{github.event_name}} 
+              *Event:* ${{github.event_name}},
+              ${{ github.pr_number && *PR:*<https://github.com/trackerdetect/test-automation/pull/${{github.pr_number}}|URL> || '' }}
           MSG_MINIMAL: true
           SLACK_USERNAME: github
