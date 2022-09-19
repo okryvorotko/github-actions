@@ -31,7 +31,7 @@ jobs:
       - name: Set variables
         if: always()
         run: |
-          VER=$(cat tests/testrail_run_url)
+          RUN=$(cat tests/testrail_run_url)
           echo "RUN_URL=$RUN" >> $GITHUB_ENV
 
       - name: Slack Notification
