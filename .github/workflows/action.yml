@@ -39,9 +39,9 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: 'https://hooks.slack.com/services/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'
-          SLACK_TITLE: 'Job failed'
+          SLACK_TITLE: GitHub action failed
           SLACK_MESSAGE: >
-              *Action:* <https://github.com/okryvorotko/github-actions/actions/runs/${{github.run_id}}|URL>,
+              *Action:* <https://github.com/okryvorotko/github-actions/actions/runs/${{github.run_id}}|${{github.workflow}}>,
               *Branch:* ${{github.ref_name}},
               *Event:* ${{github.event_name}},
               *Test Run:* <${{env.RUN_URL}}|URL>
