@@ -24,6 +24,7 @@ jobs:
       - run: npm run all-reporter ${{ inputs.file && env.file || '' }}
         working-directory: ./tests/test
       - name: Slack Notification
+        if: always()
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: 'https://hooks.slack.com/services/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'
