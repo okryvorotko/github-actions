@@ -33,6 +33,12 @@ jobs:
         run: |
           RUN=$(cat tests/testrail_run_url)
           echo "RUN_URL=$RUN" >> $GITHUB_ENV
+          PASS=$(cat tests/passing)
+          echo "PASSING=$PASS" >> $GITHUB_ENV
+          FAIL=$(cat tests/failing)
+          echo "FAILING=$FAIL" >> $GITHUB_ENV
+          SKIP=$(cat tests/skipped)
+          echo "SKIPPED=$SKIP" >> $GITHUB_ENV
 
       - name: Slack Notification
         if: always()
@@ -44,6 +50,9 @@ jobs:
               *Action:* <https://github.com/okryvorotko/github-actions/actions/runs/${{github.run_id}}|${{github.workflow}}>,
               *Branch:* ${{github.ref_name}},
               *Event:* ${{github.event_name}},
-              *Test Run:* <${{env.RUN_URL}}|URL>
+              *Test Run:* <${{env.RUN_URL}}|URL>,
+              *Passing:* ${{env.PASSING}},
+              *Failing:* ${{env.FAILING}},
+              *Skipped:* ${{env.SKIPPED}}
           MSG_MINIMAL: true
           SLACK_USERNAME: github

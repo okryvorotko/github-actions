@@ -1,5 +1,6 @@
 "use strict";
 const Mocha = require("mocha");
+const fs = require("fs");
 const {
     EVENT_RUN_BEGIN,
     EVENT_RUN_END,
@@ -55,6 +56,8 @@ class Reporter {
                 console.log(`${yellow}${this.indent()}-retrying ${resetColor}${test.title}`);
             })
             .once(EVENT_RUN_END, () => {
+                const fs = require('fs');
+
                 console.log(`\n\n ${stats.passes + stats.failures} total(excluding ${stats.pending} skipped) ${grey}(${stats.duration}ms)${resetColor}`);
                 console.log(`${green} ${stats.passes} passing${resetColor}`);
                 if (stats.pending) {
@@ -65,6 +68,10 @@ class Reporter {
                     console.log(`${red} ${stats.failures} failing${resetColor}`);
                     this.printFailed(this._failed, red);
                 }
+
+                fs.writeFileSync("passing", stats.passes);
+                fs.writeFileSync("failing", stats.failures);
+                fs.writeFileSync("skipped", stats.pending);
             });
     }
 
