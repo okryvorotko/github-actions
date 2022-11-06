@@ -1,6 +1,9 @@
 name: Reusable2
 on:
   workflow_call:
+    inputs:
+      command:
+        type: string
 jobs:
   run_tests:
     runs-on: ubuntu-latest
