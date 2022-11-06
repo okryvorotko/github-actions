@@ -1,6 +1,6 @@
 name: Reusable
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       someInput:
         type: boolean
@@ -8,4 +8,5 @@ on:
         required: true
         default: false
 jobs:
-  uses: .github/workflows/reusable.yml
+  run_tests:
+    uses: .github/workflows/reusable.yml
