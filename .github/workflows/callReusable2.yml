@@ -10,3 +10,4 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with:
       command: npm run reusable2
+      someInput: Input from Caller2
