@@ -4,6 +4,8 @@ on:
     inputs:
       command:
         type: string
+      someInput:
+        type: string
 jobs:
   tests:
     runs-on: ubuntu-latest
