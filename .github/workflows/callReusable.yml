@@ -6,5 +6,7 @@ on:
         type: string
         description: 'Input string example'
 jobs:
-  run_tests:
+  run_reusable:
     uses: ./.github/workflows/reusable.yml
+  run_reusable2:
+    uses: ./.github/workflows/reusable2.yml

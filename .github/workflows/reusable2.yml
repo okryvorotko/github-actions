@@ -1,4 +1,4 @@
-name: Reusable
+name: Reusable2
 on:
   workflow_call:
 jobs:
@@ -13,6 +13,6 @@ jobs:
 
       - name: tests
         id: tests
-        run: npm run reusable
+        run: npm run reusable2
         env:
           someInput: inputs.someInput
