@@ -20,4 +20,4 @@ jobs:
         id: tests
         run: ${{inputs.command}}
         env:
-          someInput: inputs.someInput
+          someInput: ${{inputs.someInput}}
