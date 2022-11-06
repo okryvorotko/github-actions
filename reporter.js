@@ -1,5 +1,6 @@
 "use strict";
 const Mocha = require("mocha");
+const config = require("./configs/config")
 
 const {
     EVENT_RUN_BEGIN,
@@ -28,7 +29,7 @@ class Reporter {
 
         runner
             .once(EVENT_RUN_BEGIN, async () => {
-                console.log("config");
+                console.log(`config: ${JSON.stringify(config, null, 2)}`);
             })
             .on(EVENT_SUITE_BEGIN, test => {
                 if (normalizeTitle(test.title) !== "") console.log(`${yellow}${this.indent()}- ${normalizeTitle(test.title)}${resetColor}`);
