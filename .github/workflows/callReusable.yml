@@ -1,0 +1,12 @@
+name: Reusable
+on:
+  workflow_call:
+    inputs:
+      someInput:
+        type: boolean
+        description: 'Input boolean example'
+        required: true
+        default: false
+jobs:
+  run_tests:
+    uses: .github/workflows/reusable.yml
