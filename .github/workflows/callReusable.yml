@@ -9,4 +9,4 @@ on:
         default: false
 jobs:
   run_tests:
-    uses: .github/workflows/reusable.yml
+    uses: ./.github/workflows/reusable.yml
