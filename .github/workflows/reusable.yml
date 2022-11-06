@@ -8,12 +8,13 @@ on:
         required: true
         default: false
 jobs:
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+  run_tests:
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    - run: npm install -g mocha dotenv
+      - run: npm install -g mocha dotenv
 
-    - name: tests
-      id: tests
-      run: npm run test
+      - name: tests
+        id: tests
+        run: npm run test
