@@ -1,0 +1,16 @@
+name: Reusable
+on:
+  workflow_call:
+    inputs:
+      someInput:
+        type: boolean
+        description: 'Input boolean example'
+        required: true
+        default: false
+jobs:
+  steps:
+    - uses: actions/checkout@v2
+    - run: npm install -g mocha dotenv
+    - name: tests
+      id: tests
+      run: npm run test
