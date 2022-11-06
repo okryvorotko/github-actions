@@ -8,11 +8,9 @@ on:
 jobs:
   run_reusable:
     uses: ./.github/workflows/reusable.yml
-    with:
-      env:
-        someInput: github.event.inputs.someInput || "reusable"
+    env:
+      someInput: github.event.inputs.someInput || "reusable"
   run_reusable2:
     uses: ./.github/workflows/reusable2.yml
-    with:
-      env:
-        someInput: github.event.inputs.someInput || "reusable2"
+    env:
+      someInput: github.event.inputs.someInput || "reusable2"
