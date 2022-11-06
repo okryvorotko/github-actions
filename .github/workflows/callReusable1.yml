@@ -1,0 +1,12 @@
+name: Caller1
+on:
+  workflow_dispatch:
+    inputs:
+      someInput:
+        type: string
+        description: Input string example
+jobs:
+  run_reusable:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      command: npm run reusable1
