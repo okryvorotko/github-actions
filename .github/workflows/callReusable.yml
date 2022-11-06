@@ -1,4 +1,4 @@
-name: Reusable
+name: Caller
 on:
   workflow_dispatch:
     inputs:
