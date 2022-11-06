@@ -4,8 +4,8 @@
   "scripts": {
     "all": "mocha -r dotenv/config",
     "all-reporter": "mocha --reporter reporter.js",
-    "reusable": "mocha -g @reusable --reporter reporter.js",
-    "reusable2": "mocha -g @reusable2 --reporter reporter.js",
+    "reusable": "mocha -g @reusableOne --reporter reporter.js",
+    "reusable2": "mocha -g @reusableTwo --reporter reporter.js",
     "exclude": "mocha -g '@exclude|@exclude2' -i --reporter reporter.js",
     "local": "DOTENV_CONFIG_PATH=.env.local mocha -r dotenv/config",
     "todo:local": "DOTENV_CONFIG_PATH=.env.local mocha -r dotenv/config --grep @todo --reporter reporter.js"
