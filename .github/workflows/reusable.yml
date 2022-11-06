@@ -12,6 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - run: npm i
       - run: npm install -g mocha dotenv
 
       - name: tests
