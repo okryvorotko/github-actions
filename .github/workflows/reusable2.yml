@@ -17,3 +17,5 @@ jobs:
       - name: tests
         id: tests
         run: ${{inputs.command}}
+        env:
+          someInput: reusable2 input
