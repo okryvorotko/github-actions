@@ -13,6 +13,4 @@ jobs:
 
       - name: tests
         id: tests
-        run: npm run reusable2
-        env:
-          someInput: inputs.someInput
+        run: ${{inputs.command}}
