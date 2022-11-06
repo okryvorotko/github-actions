@@ -3,10 +3,8 @@ on:
   workflow_dispatch:
     inputs:
       someInput:
-        type: boolean
-        description: 'Input boolean example'
-        required: true
-        default: false
+        type: string
+        description: 'Input string example'
 jobs:
   run_tests:
     uses: ./.github/workflows/reusable.yml
