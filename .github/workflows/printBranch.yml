@@ -14,4 +14,6 @@ jobs:
       - run: npm i
       - run: npm run printBranch
         env:
-          TESTS_BRANCH: ${{github.head_ref}}
+          TESTS_BRANCH: ${{github.ref_name}}
+          TESTS_BRANCH_ON_PR: ${{github.head_ref}}
+
