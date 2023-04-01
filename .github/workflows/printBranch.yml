@@ -1,0 +1,15 @@
+name: Print branch
+
+on:
+  workflow_dispatch:
+
+jobs:
+  close-runs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm i
+      - run: npm run printBranch
+        env:
+          TESTS_BRANCH: ${{github.ref_name}}

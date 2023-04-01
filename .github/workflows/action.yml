@@ -2,7 +2,7 @@ name: Test action
 
 on:
   #schedule:
-    #- cron: '*/5 * * * *'
+  #- cron: '*/5 * * * *'
   pull_request:
     types: [ opened, reopened ]
   workflow_dispatch:
@@ -41,9 +41,9 @@ jobs:
           SLACK_WEBHOOK: secrets.SLACK_WEBHOOK
           SLACK_TITLE: GitHub action failed
           SLACK_MESSAGE: >
-              *Action:* <https://github.com/okryvorotko/github-actions/actions/runs/${{github.run_id}}|${{github.workflow}}>,
-              *Branch:* ${{github.ref_name}},
-              *Test Run:* <${{env.RUN_URL}}|URL>
+            *Action:* <https://github.com/okryvorotko/github-actions/actions/runs/${{github.run_id}}|${{github.workflow}}>,
+            *Branch:* ${{github.ref_name}},
+            *Test Run:* <${{env.RUN_URL}}|URL>
           MSG_MINIMAL: true
           SLACK_FOOTER: ${{github.event_name}}
           SLACK_COLOR: ${{job.status}}
