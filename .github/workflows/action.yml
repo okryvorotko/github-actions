@@ -3,8 +3,6 @@ name: Test action
 on:
   #schedule:
   #- cron: '*/5 * * * *'
-  pull_request:
-    types: [ opened, reopened ]
   workflow_dispatch:
     inputs:
       file:
