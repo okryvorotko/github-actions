@@ -3,15 +3,24 @@ on:
   workflow_dispatch:
 
 jobs:
-  run_reusable:
+  preparations:
     runs-on: ubuntu-latest
     steps:
-    - name: print something
-      run: echo 'print something'
-    - name: run reusable
-      uses: ./.github/workflows/reusable.yml
-      with:
-        command: npm run reusable1
-        someInput: Input from Caller1
-    - name: print something
-      run: echo 'print something'
+      - uses: actions/checkout@v3
+
+      - name: Create file
+        run: echo "file content" > filename.txt
+
+  run_reusable:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      command: npm run reusable1
+      someInput: Input from Caller1
+
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Delete file
+        run: rm -rf filename.txt
