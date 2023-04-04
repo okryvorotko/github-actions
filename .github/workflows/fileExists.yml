@@ -1,0 +1,19 @@
+name: Check if file exists
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check-file-exists:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set test run URL variable
+        run: |
+          (test -f  config.jsons) || exit
+          RUN=$(cat testrail_run_url)
+          echo "RUN_URL=$RUN" >> $GITHUB_ENV
+      - name: Print something
+        run: echo something
