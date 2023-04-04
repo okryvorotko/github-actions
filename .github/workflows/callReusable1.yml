@@ -12,12 +12,14 @@ jobs:
         run: echo "file content" > filename.txt
 
   run_reusable:
+    needs: preparations
     uses: ./.github/workflows/reusable.yml
     with:
       command: npm run reusable1
       someInput: Input from Caller1
 
   post:
+    needs: run_reusable
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
