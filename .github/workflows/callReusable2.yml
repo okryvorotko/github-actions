@@ -24,7 +24,7 @@ jobs:
     with:
       command: npm run reusable2
       someInput: Input from Caller2
-      sharedVar: ${{needs.preparations.outputs.SHARED_VAR}}
+      from-caller-to-reusable: ${{needs.preparations.outputs.SHARED_VAR}}
 
   post:
     needs: run_reusable

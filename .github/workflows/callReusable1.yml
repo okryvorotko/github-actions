@@ -13,9 +13,9 @@ jobs:
         run: |
           echo "some shared variable value: caller1" > filename
           FILE_CONTENT=$(cat filename)
-          echo "SHARED_VAR=$FILE_CONTENT" >> $GITHUB_OUTPUT
+          echo "FROM_CALLER_TO_REUSABLE=$FILE_CONTENT" >> $GITHUB_OUTPUT
     outputs:
-      SHARED_VAR: ${{ steps.create-file.outputs.SHARED_VAR }}
+      FROM_CALLER_TO_REUSABLE: ${{ steps.create-file.outputs.FROM_CALLER_TO_REUSABLE }}
 
 
   run_reusable:
@@ -24,7 +24,7 @@ jobs:
     with:
       command: npm run reusable1
       someInput: Input from Caller1
-      sharedVar: ${{needs.preparations.outputs.SHARED_VAR}}
+      FROM_CALLER_TO_REUSABLE: ${{needs.preparations.outputs.FROM_CALLER_TO_REUSABLE}}
 
   post:
     needs: run_reusable
@@ -37,4 +37,4 @@ jobs:
       - name: Post tests
         run: npm run postTests
         env:
-          nestedVar: ${{ needs.run_reusable.outputs.nestedVar }}
+          FROM_REUSABLE_TO_CALLER: ${{ needs.run_reusable.outputs.FROM_REUSABLE_TO_CALLER }}

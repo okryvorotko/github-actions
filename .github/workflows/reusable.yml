@@ -6,11 +6,11 @@ on:
         type: string
       someInput:
         type: string
-      sharedVar:
+      from-caller-to-reusable:
         type: string
     outputs:
-      nestedVar:
-        value: ${{ jobs.tests.outputs.nestedVar }}
+      FROM_REUSABLE_TO_CALLER:
+        value: ${{ jobs.tests.outputs.FROM_REUSABLE_TO_CALLER }}
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -27,10 +27,10 @@ jobs:
           ${{inputs.command}}
           echo "file content" > filename.txt
           FILE_CONTENT=$(cat filename.txt)
-          echo "nestedVar=$FILE_CONTENT" >> $GITHUB_OUTPUT
+          echo "FROM_REUSABLE_TO_CALLER=$FILE_CONTENT" >> $GITHUB_OUTPUT
         env:
           someInput: ${{inputs.someInput}}
-          sharedVar: ${{inputs.sharedVar}}
+          from-caller-to-reusable: ${{inputs.from-caller-to-reusable}}
 
     outputs:
-      nestedVar: ${{ steps.tests.outputs.nestedVar }}
+      FROM_REUSABLE_TO_CALLER: ${{ steps.tests.outputs.FROM_REUSABLE_TO_CALLER }}
