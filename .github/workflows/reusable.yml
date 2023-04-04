@@ -9,7 +9,8 @@ on:
       sharedVar:
         type: string
     outputs:
-      nestedVar: ${{ jobs.tests.outputs.nestedVar }}
+      nestedVar:
+        value: ${{ jobs.tests.outputs.nestedVar }}
 jobs:
   tests:
     runs-on: ubuntu-latest
