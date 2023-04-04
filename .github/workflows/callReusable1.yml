@@ -4,6 +4,7 @@ on:
 
 jobs:
   run_reusable:
+    runs-on: ubuntu-latest
     steps:
     - name: print something
       run: echo 'print something'
