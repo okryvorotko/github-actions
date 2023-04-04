@@ -21,3 +21,4 @@ jobs:
         run: ${{inputs.command}}
         env:
           someInput: ${{inputs.someInput}}
+          FILE: ${{inputs.FILE}}
