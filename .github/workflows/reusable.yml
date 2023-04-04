@@ -6,7 +6,7 @@ on:
         type: string
       someInput:
         type: string
-      FILE:
+      sharedVar:
         type: string
 jobs:
   tests:
@@ -23,4 +23,4 @@ jobs:
         run: ${{inputs.command}}
         env:
           someInput: ${{inputs.someInput}}
-          FILE: ${{inputs.FILE}}
+          sharedVar: ${{inputs.sharedVar}}

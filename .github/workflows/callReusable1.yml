@@ -11,11 +11,11 @@ jobs:
       - name: Create file
         id: create-file
         run: |
-          echo "file content" > filename
+          echo "some shared variable value: caller1" > filename
           FILE_CONTENT=$(cat filename)
-          echo "GITHUB_VAR=$FILE_CONTENT" >> $GITHUB_OUTPUT
+          echo "SHARED_VAR=$FILE_CONTENT" >> $GITHUB_OUTPUT
     outputs:
-      GITHUB_VAR: ${{ steps.create-file.outputs.GITHUB_VAR }}
+      SHARED_VAR: ${{ steps.create-file.outputs.SHARED_VAR }}
 
 
   run_reusable:
@@ -24,7 +24,7 @@ jobs:
     with:
       command: npm run reusable1
       someInput: Input from Caller1
-      FILE: ${{needs.preparations.outputs.GITHUB_VAR}}
+      sharedVar: ${{needs.preparations.outputs.SHARED_VAR}}
 
   post:
     needs: run_reusable
