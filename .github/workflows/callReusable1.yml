@@ -20,19 +20,18 @@ jobs:
 
   run_reusable:
     needs: preparations
-    steps:
-      id: reusable-job
-      uses: ./.github/workflows/reusable.yml
-      with:
-        command: |
-          npm run reusable1
-          echo "some nested shared variable value: reusable" > nested
-          FILE_CONTENT=$(cat nested)
-          echo "NESTED_VAR=$FILE_CONTENT" >> $GITHUB_OUTPUT
-        someInput: Input from Caller1
-        sharedVar: ${{needs.preparations.outputs.SHARED_VAR}}
+    id: reusable-job
+    uses: ./.github/workflows/reusable.yml
+    with:
+      command: |
+        npm run reusable1
+        echo "some nested shared variable value: reusable" > nested
+        FILE_CONTENT=$(cat nested)
+        echo "NESTED_VAR=$FILE_CONTENT" >> $GITHUB_OUTPUT
+      someInput: Input from Caller1
+      sharedVar: ${{needs.preparations.outputs.SHARED_VAR}}
     outputs:
-      NESTED_VAR: ${{ steps.reusable-job.outputs.NESTED_VAR }}
+      NESTED_VAR: ${{ reusable-job.outputs.NESTED_VAR }}
 
   post:
     needs: run_reusable
