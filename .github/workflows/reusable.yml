@@ -33,4 +33,4 @@ jobs:
           sharedVar: ${{inputs.sharedVar}}
 
     outputs:
-      nestedVar: steps.tests.outputs.nestedVar
+      nestedVar: ${{ steps.tests.outputs.nestedVar }}
