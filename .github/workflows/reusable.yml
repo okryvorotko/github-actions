@@ -8,6 +8,8 @@ on:
         type: string
       sharedVar:
         type: string
+    outputs:
+      nestedVar: ${{ steps.output-step.outputs.nestedVar }}
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -20,7 +22,14 @@ jobs:
 
       - name: tests
         id: tests
-        run: ${{inputs.command}}
+        run: |
+          ${{inputs.command}}
+          echo "file content" > filename.txt
+          FILE_CONTENT=$(cat filename.txt)
+          echo "nestedVar=$FILE_CONTENT" >> $GITHUB_OUTPUT
         env:
           someInput: ${{inputs.someInput}}
           sharedVar: ${{inputs.sharedVar}}
+
+    outputs:
+      nestedVar: steps.tests.outputs.nestedVar
