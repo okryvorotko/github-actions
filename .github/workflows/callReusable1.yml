@@ -34,5 +34,5 @@ jobs:
 
       - name: Post tests
         run: npm run postTests
-        with:
+        env:
           nestedVar: ${{ needs.run_reusable.outputs.nestedVar }}
