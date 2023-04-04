@@ -13,7 +13,7 @@ jobs:
         run: |
           echo "file content" > filename
           FILE_CONTENT=$(cat filename)
-          echo "::set-output name=GITHUB_VAR::$FILE_CONTENT"
+          echo "GITHUB_VAR=$FILE_CONTENT" >> $GITHUB_ENV
     outputs:
       GITHUB_VAR: ${{ steps.create-file.outputs.GITHUB_VAR }}
 
