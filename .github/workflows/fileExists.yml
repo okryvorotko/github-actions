@@ -17,7 +17,7 @@ jobs:
         run: |
           if [ -f filename.txt ]; then isExists=true; fi
           echo $isExists
-          if [ "$isExists" -e "true" ]; then
+          if [ "$isExists" == "true" ]; then
             FILE_CONTENT=$(cat filename.txt);
             echo "GITHUB_VAR=$FILE_CONTENT" >> $GITHUB_ENV;
           else
