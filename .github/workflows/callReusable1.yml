@@ -9,10 +9,14 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Create file
+        id: create-file
         run: |
           echo "file content" > filename
           FILE_CONTENT=$(cat filename.txt)
-          echo "GITHUB_VAR=$FILE_CONTENT" >> $GITHUB_ENV
+          echo "::set-output name=GITHUB_VAR::$FILE_CONTENT"
+    outputs:
+      GITHUB_VAR: ${{ steps.create-file.outputs.GITHUB_VAR }}
+
 
   run_reusable:
     needs: preparations
@@ -20,7 +24,7 @@ jobs:
     with:
       command: npm run reusable1
       someInput: Input from Caller1
-      FILE: {{ env.GITHUB_VAR }}
+      FILE: ${{needs.preparations.outputs.GITHUB_VAR}}
 
   post:
     needs: run_reusable
