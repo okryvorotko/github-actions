@@ -23,5 +23,17 @@ jobs:
           else
             echo 'file does not exist'
           fi
+      - name: Check if exists (for the file that doesn't)
+        run: |
+          if [ -f nonExistingFile ]; then isExists=true; fi
+          echo $isExists
+          if [ "$isExists" == "true" ]; then
+            FILE_CONTENT=$(cat nonExistingFile);
+            echo "GITHUB_VAR2=$FILE_CONTENT" >> $GITHUB_ENV;
+          else
+            echo 'file does not exist'
+          fi
       - name: Print var
         run: echo ${{ env.GITHUB_VAR }}
+      - name: Print var for non existing file
+        run: echo ${{ env.GITHUB_VAR2 }}
