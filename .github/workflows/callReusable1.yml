@@ -31,6 +31,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - run: npm i
+      - run: npm install -g mocha dotenv
 
       - name: Post tests
         run: npm run postTests
