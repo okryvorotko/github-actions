@@ -12,7 +12,7 @@ jobs:
         id: create-file
         run: |
           echo "file content" > filename
-          FILE_CONTENT=$(cat filename.txt)
+          FILE_CONTENT=$(cat filename)
           echo "::set-output name=GITHUB_VAR::$FILE_CONTENT"
     outputs:
       GITHUB_VAR: ${{ steps.create-file.outputs.GITHUB_VAR }}
