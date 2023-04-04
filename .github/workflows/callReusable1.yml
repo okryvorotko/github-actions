@@ -4,7 +4,13 @@ on:
 
 jobs:
   run_reusable:
-    uses: ./.github/workflows/reusable.yml
-    with:
-      command: npm run reusable1
-      someInput: Input from Caller1
+    steps:
+    - name: print something
+      run: echo 'print something'
+    - name: run reusable
+      uses: ./.github/workflows/reusable.yml
+      with:
+        command: npm run reusable1
+        someInput: Input from Caller1
+    - name: print something
+      run: echo 'print something'
