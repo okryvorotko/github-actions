@@ -13,9 +13,9 @@ jobs:
         run: |
           echo "some shared variable value: caller2" > filename
           FILE_CONTENT=$(cat filename)
-          echo "SHARED_VAR=$FILE_CONTENT" >> $GITHUB_OUTPUT
+          echo "FROM_CALLER_TO_REUSABLE=$FILE_CONTENT" >> $GITHUB_OUTPUT
     outputs:
-      SHARED_VAR: ${{ steps.create-file.outputs.SHARED_VAR }}
+      FROM_CALLER_TO_REUSABLE: ${{ steps.create-file.outputs.FROM_CALLER_TO_REUSABLE }}
 
 
   run_reusable:
@@ -24,13 +24,17 @@ jobs:
     with:
       command: npm run reusable2
       someInput: Input from Caller2
-      from-caller-to-reusable: ${{needs.preparations.outputs.SHARED_VAR}}
+      FROM_CALLER_TO_REUSABLE: ${{needs.preparations.outputs.FROM_CALLER_TO_REUSABLE}}
 
   post:
     needs: run_reusable
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - run: npm i
+      - run: npm install -g mocha dotenv
 
-      - name: Delete file
-        run: rm -rf filename
+      - name: Post tests
+        run: npm run postTests
+        env:
+          FROM_REUSABLE_TO_CALLER: ${{ needs.run_reusable.outputs.FROM_REUSABLE_TO_CALLER }}

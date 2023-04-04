@@ -6,7 +6,7 @@ on:
         type: string
       someInput:
         type: string
-      from-caller-to-reusable:
+      FROM_CALLER_TO_REUSABLE:
         type: string
     outputs:
       FROM_REUSABLE_TO_CALLER:
@@ -30,7 +30,7 @@ jobs:
           echo "FROM_REUSABLE_TO_CALLER=$FILE_CONTENT" >> $GITHUB_OUTPUT
         env:
           someInput: ${{inputs.someInput}}
-          from-caller-to-reusable: ${{inputs.from-caller-to-reusable}}
+          FROM_CALLER_TO_REUSABLE: ${{inputs.FROM_CALLER_TO_REUSABLE}}
 
     outputs:
       FROM_REUSABLE_TO_CALLER: ${{ steps.tests.outputs.FROM_REUSABLE_TO_CALLER }}
