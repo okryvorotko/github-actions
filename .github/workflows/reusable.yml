@@ -6,6 +6,8 @@ on:
         type: string
       someInput:
         type: string
+      FILE:
+        type: string
 jobs:
   tests:
     runs-on: ubuntu-latest
