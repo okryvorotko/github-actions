@@ -16,7 +16,6 @@ jobs:
       - name: Check if exists
         run: |
           if [ -f filename.txt ]; then isExists=true; fi
-          (test -f filename.txt && isExists=true) || isExists=false
           echo $isExists
           if [ $isExists -e "true" ]; then
             FILE_CONTENT=$(cat filename.txt);
