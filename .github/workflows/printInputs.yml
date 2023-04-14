@@ -1,6 +1,8 @@
 name: Print inputs
 
 on:
+  schedule:
+    - cron: '* * * * *'
   workflow_dispatch:
     inputs:
       logLevel:
