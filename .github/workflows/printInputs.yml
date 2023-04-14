@@ -32,8 +32,8 @@ jobs:
 
       - name: Inputs
         run: |
-          echo "toJson(github.event.inputs): ${{ toJson(github.event.inputs) }}"
-          echo "toJson(env): ${{ toJson(env) }}"
+          echo "github.event.inputs: ${{ github.event.inputs }}"
+          echo "env: ${{ env }}"
 
       - name: Inputs
         if: ${{ github.event.inputs }}
