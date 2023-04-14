@@ -57,5 +57,9 @@ jobs:
       - name: Scheduled run inputs
         if: ${{ env }}
         run: echo "${{ toJSON(env) }}"
+
+      - name: Scheduled run inputs
+        if: env
+        run: echo "${{ toJSON(env) }}"
         
       
