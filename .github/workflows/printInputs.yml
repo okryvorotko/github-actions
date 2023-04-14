@@ -5,21 +5,18 @@ on:
     - cron: '* * * * *'
   workflow_dispatch:
     inputs:
-      logLevel:
+      input1:
+        default: 'input1'
+      input2:
         type: boolean
-        description: 'Logging on tests execution'
-        required: true
         default: false
-      slackNotify:
-        type: boolean
-        description: 'Send slack notification to #nightlytest on failure'
-        required: true
-        default: false
-      testrail:
-        type: boolean
-        description: 'TestRail'
-        required: true
-        default: true
+      input3:
+        type: choice
+        default: 'default'
+        options:
+          - choice1
+          - choice2
+          - choice3
   pull_request:
     types: [ opened, reopened ]
 
