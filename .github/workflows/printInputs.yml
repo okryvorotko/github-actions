@@ -26,28 +26,28 @@ on:
 jobs:
   print-branch:
     runs-on: ubuntu-latest
-    env:
-      scheduled: 'true'
 
     steps:
       - uses: actions/checkout@v3
 
-      - name: Manual run inputs
-        if: toJSON(github.event.inputs) != ''
-        run: echo "${{ toJSON(github.event.inputs) }}"
+      - name: Scheduled run inputs
+        if: toJSON(env) != ''
+        run: echo "${{ toJSON(env) }}"
 
-      - name: Manual run inputs
-        if: toJSON(github.event.inputs)
-        run: echo "${{ toJSON(github.event.inputs) }}"
+      - name: Scheduled run inputs
+        if: toJSON(env)
+        run: echo "${{ toJSON(env) }}"
 
-      - name: Manual run inputs
-        if: ${{ toJSON(github.event.inputs) }}
-        run: echo "${{ toJSON(github.event.inputs) }}"
+      - name: Scheduled run inputs
+        if: ${{ toJSON(env) }}
+        run: echo "${{ toJSON(env) }}"
 
-      - name: Manual run inputs
-        if: ${{ toJSON(github.event.inputs) }} != "null"
-        run: echo "${{ toJSON(github.event.inputs) }}"
+      - name: Scheduled run inputs
+        if: ${{ toJSON(env) }} != "null"
+        run: echo "${{ toJSON(env) }}"
 
-      - name: Manual run inputs
-        if: ${{ toJSON(github.event.inputs) }} != null
-        run: echo "${{ toJSON(github.event.inputs) }}"
+      - name: Scheduled run inputs
+        if: ${{ toJSON(env) }} != null
+        run: echo "${{ toJSON(env) }}"
+        
+      
