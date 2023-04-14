@@ -32,7 +32,7 @@ jobs:
 
       - name: Inputs
         run: |
-          echo github.event.inputs: "${{ github.event.inputs }}"
-          echo toJson(github.event.inputs): "${{ toJson(github.event.inputs) }}"
-          echo env: "${{ env }}"
-          echo toJson(env): "${{ toJson(env) }}"
+          echo "github.event.inputs: ${{ github.event.inputs }}"
+          echo "toJson(github.event.inputs): ${{ toJson(github.event.inputs) }}"
+          echo "env: ${{ env }}"
+          echo "toJson(env): ${{ toJson(env) }}"
