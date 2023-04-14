@@ -31,9 +31,6 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Inputs
-        run: echo "${{ toJson(github.event.inputs) || toJSON(env) }}"
-
-      - name: Inputs
         run: |
           echo "${{ github.event.inputs }}"
           echo "${{ env }}"
