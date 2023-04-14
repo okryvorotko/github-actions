@@ -27,3 +27,4 @@ jobs:
 
       - name: Inputs ${{ toJson(github.event.inputs) }}
         if: ${{ github.event.inputs }}
+        run: echo "${{ toJson(github.event.inputs) }}"
