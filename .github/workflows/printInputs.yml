@@ -1,0 +1,34 @@
+name: Print inputs
+
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        type: boolean
+        description: 'Logging on tests execution'
+        required: true
+        default: false
+      slackNotify:
+        type: boolean
+        description: 'Send slack notification to #nightlytest on failure'
+        required: true
+        default: false
+      testrail:
+        type: boolean
+        description: 'TestRail'
+        required: true
+        default: true
+  pull_request:
+    types: [ opened, reopened ]
+
+jobs:
+  print-branch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: "Inputs ${{ toJSON(github.event.inputs) }}"
+      - run: npm i
+      - run: npm run printBranch
+        env:
+          TESTS_BRANCH: ${{github.head_ref}}
