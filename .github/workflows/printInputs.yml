@@ -43,11 +43,11 @@ jobs:
         run: echo "${{ toJSON(env) }}"
 
       - name: Scheduled run inputs
-        if: ${{ toJSON(env) }} != "null"
+        if: ${{ toJSON(env) }} != "{}"
         run: echo "${{ toJSON(env) }}"
 
       - name: Scheduled run inputs
-        if: ${{ toJSON(env) }} != null
+        if: ${{ toJSON(env) }} != {}
         run: echo "${{ toJSON(env) }}"
         
       
