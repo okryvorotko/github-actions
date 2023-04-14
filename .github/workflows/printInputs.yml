@@ -24,8 +24,17 @@ on:
 jobs:
   print-branch:
     runs-on: ubuntu-latest
+    env:
+      scheduled: 'true'
 
     steps:
       - uses: actions/checkout@v3
-      - name: "Inputs ${{ toJSON(github.event.inputs) }}"
-        run: npm i
+
+      - name: Inputs
+        if: ${{ toJSON(github.event.inputs) }}
+        run: echo ${{ toJSON(github.event.inputs) }}
+
+      - name: Inputs
+        if: ${{ toJSON(env) }}
+        run: echo ${{ toJSON(env) }}
+      - run: npm i
