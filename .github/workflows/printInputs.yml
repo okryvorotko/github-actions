@@ -30,11 +30,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Inputs
+      - name: Inputs ${{ github.event.inputs }}
         if: ${{ toJSON(github.event.inputs) }}
         run: echo "${{ toJSON(github.event.inputs) }}"
-
-      - name: Inputs
-        if: ${{ toJSON(env) }}
-        run: echo "${{ toJSON(env) }}"
-      - run: npm i
