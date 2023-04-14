@@ -32,6 +32,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Inputs
-        if: ${{ toJSON(github.event.inputs) }}
+      - name: Manual run inputs
+        if: ${{ toJSON(github.event.inputs) != null }}
         run: echo "${{ toJSON(github.event.inputs) }}"
