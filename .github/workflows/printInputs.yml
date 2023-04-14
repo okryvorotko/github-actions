@@ -23,12 +23,9 @@ on:
 
 jobs:
   print-branch:
+    name: "Inputs ${{ toJSON(github.event.inputs) }}"
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
-      - name: "Inputs ${{ toJSON(github.event.inputs) }}"
       - run: npm i
-      - run: npm run printBranch
-        env:
-          TESTS_BRANCH: ${{github.head_ref}}
