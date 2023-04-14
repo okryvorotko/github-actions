@@ -32,9 +32,9 @@ jobs:
 
       - name: Inputs
         if: ${{ toJSON(github.event.inputs) }}
-        run: echo ${{ toJSON(github.event.inputs) }}
+        run: echo "${{ toJSON(github.event.inputs) }}"
 
       - name: Inputs
         if: ${{ toJSON(env) }}
-        run: echo ${{ toJSON(env) }}
+        run: echo "${{ toJSON(env) }}"
       - run: npm i
