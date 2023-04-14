@@ -37,6 +37,10 @@ jobs:
         run: echo "${{ toJSON(github.event.inputs) }}"
 
       - name: Manual run inputs
+        if: toJSON(github.event.inputs) != ""
+        run: echo "${{ toJSON(github.event.inputs) }}"
+
+      - name: Manual run inputs
         if: toJSON(github.event.inputs)
         run: echo "${{ toJSON(github.event.inputs) }}"
 
@@ -45,5 +49,13 @@ jobs:
         run: echo "${{ toJSON(github.event.inputs) }}"
 
       - name: Manual run inputs
-        if: ${{ toJSON(github.event.inputs) }} != 'null'
+        if: ${{ toJSON(github.event.inputs) }} != "null"
+        run: echo "${{ toJSON(github.event.inputs) }}"
+
+      - name: Manual run inputs
+        if: "${{ toJSON(github.event.inputs) }}" != "null"
+        run: echo "${{ toJSON(github.event.inputs) }}"
+
+      - name: Manual run inputs
+        if: ${{ toJSON(github.event.inputs) }} != null
         run: echo "${{ toJSON(github.event.inputs) }}"
