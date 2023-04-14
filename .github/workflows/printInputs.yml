@@ -30,36 +30,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Scheduled run inputs
-        if: toJSON(env) != ''
-        run: echo "${{ toJSON(env) }}"
-
-      - name: Scheduled run inputs
-        if: toJSON(env)
-        run: echo "${{ toJSON(env) }}"
-
-      - name: Scheduled run inputs
-        if: ${{ toJSON(env) }}
-        run: echo "${{ toJSON(env) }}"
-
-      - name: Scheduled run inputs
-        if: ${{ toJSON(env) }} != "{}"
-        run: echo "${{ toJSON(env) }}"
-
-      - name: Scheduled run inputs
-        if: ${{ toJSON(env) }} != {}
-        run: echo "${{ toJSON(env) }}"
-
-      - name: Scheduled run inputs
-        if: ${{ env }}
-        run: echo "${{ toJSON(env) }}"
-
-      - name: Scheduled run inputs
-        if: ${{ env }}
-        run: echo "${{ toJSON(env) }}"
-
-      - name: Scheduled run inputs
-        if: env
-        run: echo "${{ toJSON(env) }}"
-        
+      - name: Inputs
+        run: echo "${{ toJson(github.event.inputs) || toJSON(env) }}"
       
