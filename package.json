@@ -10,6 +10,7 @@
     "local": "DOTENV_CONFIG_PATH=.env.local mocha -r dotenv/config",
     "todo:local": "DOTENV_CONFIG_PATH=.env.local mocha -r dotenv/config --grep @todo --reporter reporter.js",
     "printBranch": "mocha -g @printBranch",
+    "printExitCode": "mocha -g @printExitCode",
     "postTests": "mocha -g @postTest"
   },
   "dependencies": {
