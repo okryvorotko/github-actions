@@ -5,6 +5,6 @@ describe('Print branch', function () {
 		const ref = process.env.REF;
 		console.log(`headref: ${headref}`);
 		console.log(`baseref: ${baseref}`);
-		console.log(`ref: ${ref}`); 
+		console.log(`ref: ${ref}`);
 	});
 });
