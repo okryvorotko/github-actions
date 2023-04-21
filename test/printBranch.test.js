@@ -7,5 +7,6 @@ describe('Print branch', function () {
 		console.log(`headref: ${headref}`);
 		console.log(`baseref: ${baseref}`);
 		console.log(`ref: ${ref}`);
+		console.log(`refname: ${refname}`);
 	});
 });
