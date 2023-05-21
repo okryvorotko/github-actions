@@ -15,9 +15,6 @@ on:
           - choice1
           - choice2
           - choice3
-  pull_request:
-    types: [ opened, reopened ]
-
 jobs:
   print-inputs:
     runs-on: ubuntu-latest
