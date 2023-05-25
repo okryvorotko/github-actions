@@ -16,6 +16,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Step is going to fail
+        run: exit 1
+
       - name: finish
         if: ${{(success() || failure()) && github.event.inputs.finish == 'true' }}
         run: echo finish
