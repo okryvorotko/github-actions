@@ -16,8 +16,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Fail step
-        run: node fail.js
+    
 
       - name: finish
         if: (success() || failure()) && ${{ github.event.inputs.finish == true }}
