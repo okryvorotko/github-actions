@@ -1,0 +1,24 @@
+name: Dynamic Input Example
+
+on:
+  workflow_dispatch:
+    inputs:
+      finish:
+        type: boolean
+        description: 'Run finish step'
+        required: true
+        default: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Fail step
+        run: node fail.js
+
+      - name: finish
+        if: always() && github.event.inputs.finish
+        run: echo finish
