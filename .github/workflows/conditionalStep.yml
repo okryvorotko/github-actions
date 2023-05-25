@@ -20,5 +20,5 @@ jobs:
         run: node fail.js
 
       - name: finish
-        if: failure() && github.event.inputs.finish
+        if: success() || failure() && github.event.inputs.finish
         run: echo finish
