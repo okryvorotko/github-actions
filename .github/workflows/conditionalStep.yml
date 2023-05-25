@@ -16,8 +16,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-
-
       - name: finish
-        if: (success() || failure()) && ${{ github.event.inputs.finish == 'true' }}
+        if: ${{(success() || failure()) && github.event.inputs.finish == 'true' }}
         run: echo finish
