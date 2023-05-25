@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Step is going to fail
-        run: exit 1
+        run: exit 127
 
       - name: Step is going to be skipped
         run: none skip.js
