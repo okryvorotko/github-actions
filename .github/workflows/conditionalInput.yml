@@ -1,0 +1,28 @@
+name: Dynamic Input Example
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up input field
+        id: setup_input
+        run: |
+          INPUT_VALUE="example_value"
+          echo "::set-output name=input_value::$INPUT_VALUE"
+
+      - name: Display input field
+        run: |
+          echo "Input field (Field A):"
+          echo "  ${{ github.event.inputs.fieldA }}"
+          echo "Input field (Field B):"
+          if [ "${{ steps.setup_input.outputs.input_value }}" == "example_value" ]; then
+            echo "  ${{ github.event.inputs.fieldB }}"
+          else
+            echo "  Field B will not be displayed."
+          fi
