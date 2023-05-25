@@ -1,4 +1,4 @@
-name: Dynamic Input Example
+name: Conditional step
 
 on:
   workflow_dispatch:
@@ -20,5 +20,5 @@ jobs:
         run: node fail.js
 
       - name: finish
-        if: success() || failure() && github.event.inputs.finish
+        if: ${{ github.event.inputs.finish === true }}
         run: echo finish
