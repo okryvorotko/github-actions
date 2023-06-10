@@ -20,7 +20,7 @@ jobs:
         run: exit 127
 
       - name: Step is going to be skipped
-        run: none skip.js
+        run: exit 0
 
       - name: finish
         if: ${{(success() || failure()) && github.event.inputs.finish == 'true' }}
