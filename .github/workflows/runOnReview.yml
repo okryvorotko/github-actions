@@ -1,4 +1,4 @@
-name: Contexts
+name: Run on  review
 
 on:
   workflow_dispatch:
