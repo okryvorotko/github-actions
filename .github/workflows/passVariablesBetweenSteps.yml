@@ -17,7 +17,8 @@ jobs:
       - name: Step 2
         run: |
           echo "The status of Step 1 was: ${{ env.STEP_STATUS || 'FAILURE' }}"
+          exit 1
 
       - name: Step 3
-        if: ${{'!env.STEP_STATUS'}}
+        if: ${{failure() || success() && '!env.STEP_STATUS'}}
         run: echo 'Alert! Step 1 failed'
