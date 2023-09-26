@@ -1,7 +1,9 @@
 name: Pass variables between steps
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - pass-variables-between-steps
 
 jobs:
   pass-variables-between-steps:
