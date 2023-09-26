@@ -15,7 +15,6 @@ jobs:
         id: step1
         continue-on-error: true
         run: |
-          exit 1
           echo "STEP_STATUS=SUCCEEDED" >> $GITHUB_ENV
 
       - name: Step 2
@@ -24,5 +23,5 @@ jobs:
           exit 1
 
       - name: Step 3
-        if: steps.step1.outcome == 'failure'
+        if: (success() || failure()) && !env.STEP_STATUS
         run: echo 'Alert! Step 1 failed'
