@@ -22,5 +22,5 @@ jobs:
 
       - name: Step 3
         run: |
-          echo "The status of Step 1 was: ${{ env.STEP_STATUS }}"
+          echo "The status of Step 1 was: ${{ env.STEP_STATUS || FAILURE }}"
         shell: bash
