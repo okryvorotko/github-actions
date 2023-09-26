@@ -12,7 +12,6 @@ jobs:
       - name: Step 1
         continue-on-error: true
         run: |
-          exit 1
           echo "STEP_STATUS=SUCCEEDED" >> $GITHUB_ENV
 
       - name: Step 2
