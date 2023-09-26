@@ -23,5 +23,5 @@ jobs:
           echo "The status of Step 1 was: ${{ env.STEP_STATUS || 'FAILURE' }}"
 
       - name: Step 3
-        if: always() && steps.step1.outcome == 'failure'
+        if: failure()
         run: echo 'Alert! Step 1 failed'
