@@ -12,11 +12,15 @@ jobs:
       - name: Step 1
         continue-on-error: true
         run: |
-          echo "STEP_STATUS=FAILED" >> $GITHUB_ENV
           exit 1
+          echo "STEP_STATUS=SUCCEEDED" >> $GITHUB_ENV
         shell: bash
 
       - name: Step 2
+        if: failure()
+        run: echo "STEP_STATUS=FAILED" >> $GITHUB_ENV
+
+      - name: Step 3
         run: |
           echo "The status of Step 1 was: ${{ env.STEP_STATUS }}"
         shell: bash
