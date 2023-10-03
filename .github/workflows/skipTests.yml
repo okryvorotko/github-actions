@@ -6,7 +6,7 @@ on:
       runTests:
         type: boolean
         description: Run tests
-        default: false
+        default: true
 
 jobs:
   skip-step:
@@ -17,7 +17,7 @@ jobs:
 
       - name: Run tests
         run: echo "Running tests"
-        if: github.event.inputs.runTests
+        if: github.event.inputs.runTests == true
 
       - name: Last step
         run: echo "Last step"
