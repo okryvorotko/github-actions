@@ -27,7 +27,7 @@ jobs:
           echo "github.event_name: ${{github.event_name}}"
           echo "inputs.runTests || github.event_name == 'schedule': ${{inputs.runTests || github.event_name == 'schedule'}}"
         if: |
-          ${{inputs.runTests || github.event_name == 'schedule'}} && env.runTests
+          ${{inputs.runTests || github.event_name == 'schedule'}} && ${{env.runTests}}
 
       - name: Last step
         run: echo "Last step"
