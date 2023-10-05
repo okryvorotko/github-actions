@@ -21,7 +21,7 @@ jobs:
 
       - name: Run tests
         run: echo "Running tests"
-        if: (env.runTests || inputs.runTests) == true
+        if: (env.runTests || inputs.runTests) == 'true'
 
       - name: Last step
         run: echo "Last step"
