@@ -1,0 +1,27 @@
+name: Skip tests 2
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+    inputs:
+      runTests:
+        type: boolean
+        description: Run tests
+        default: true
+
+jobs:
+  skip-step:
+    runs-on: ubuntu-latest
+    env:
+      runTests: true
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run tests
+        run: echo "Running tests"
+        if: env.runTests || inputs.runTests
+
+      - name: Last step
+        run: echo "Last step"
