@@ -1,0 +1,27 @@
+name: Notify if certain step failed
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Failing step
+        continue-on-error: true
+        id: step1
+        run: |
+          echo "EXECUTING_STEP=TRUE" >> $GITHUB_ENV
+          exit 1
+          echo "STEP_EXECUTED=TRUE" >> $GITHUB_ENV
+
+
+      - name: Run tests
+        run: |
+          echo "Notification"
+        if: (failure() || success()) && !env.STEP_EXECUTED && env.EXECUTING_STEP
+
+
