@@ -10,9 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Failing step
+      - name: Failing step 1
+        run: exit 1
+
+      - name: Failing step 2
         continue-on-error: true
-        id: step1
         run: |
           echo "EXECUTING_STEP=TRUE" >> $GITHUB_ENV
           exit 1
