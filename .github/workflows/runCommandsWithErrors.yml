@@ -13,5 +13,5 @@ jobs:
       - name: Run commands
         run: |
           ls
-          abc
+          abc || true
           echo "finish"
