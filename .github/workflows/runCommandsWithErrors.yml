@@ -1,0 +1,17 @@
+name: Run commands with errors
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-commands-with-errors:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run commands
+        run: |
+          ls
+          abc
+          echo "finish"
