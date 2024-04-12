@@ -22,9 +22,9 @@ jobs:
       - name: Print envs
         run:
           |
-          echo "env.runStep ${{env.runStep}}"
+          echo "github.event_name ${{github.event_name}}"
           echo "github.event.inputs.runStep ${{github.event.inputs.runStep}}"
 
       - name: Conditional step
-        if: ${{env.runStep || github.event.inputs.runStep == true}}
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.runStep == true || github.event_name == 'schedule' }}
         run: echo "Step is executed"
