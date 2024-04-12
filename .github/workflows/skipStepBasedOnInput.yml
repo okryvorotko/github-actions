@@ -1,0 +1,24 @@
+name: Skip step based on input
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+    inputs:
+      runStep:
+        type: boolean
+        description: Run step
+        default: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      runStep: true
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Conditional step
+        if: ${{env.runStep || github.event.inputs.runStep == true}}
+        run: echo "Step is executed"
