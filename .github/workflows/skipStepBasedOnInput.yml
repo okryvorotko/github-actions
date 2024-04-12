@@ -19,6 +19,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Print envs
+        run:
+          |
+          echo "env.runStep ${{env.runStep}}"
+          echo "github.event.inputs.runStep ${{github.event.inputs.runStep}}"
+
       - name: Conditional step
         if: ${{env.runStep || github.event.inputs.runStep == true}}
         run: echo "Step is executed"
