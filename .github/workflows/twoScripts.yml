@@ -15,26 +15,10 @@ jobs:
         with:
           timeout_seconds: 120
           max_attempts: 3
+          retry_on: error
           command: |
             node scripts/failingScript.js
             node scripts/successfulScript.js
-
-      - name: Run two scripts, second is failing
-        uses: nick-fields/retry@v2
-        with:
-          timeout_seconds: 120
-          max_attempts: 3
-          command: |
-            node scripts/successfulScript.js
-            node scripts/failingScript.js
-
-      - name: Run one failing script
-        uses: nick-fields/retry@v2
-        with:
-          timeout_seconds: 120
-          max_attempts: 3
-          command: |
-            node scripts/failingScript.js
 
       - name: Run another step
         run: echo "Success"
