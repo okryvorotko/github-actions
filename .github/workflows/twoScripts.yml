@@ -15,10 +15,7 @@ jobs:
         with:
           timeout_seconds: 120
           max_attempts: 3
-          retry_on: error
-          command: |
-            node scripts/failingScript.js
-            node scripts/successfulScript.js
+          command: node scripts/failingScript.js && node scripts/successfulScript.js
 
       - name: Run another step
         run: echo "Success"
