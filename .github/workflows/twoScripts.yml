@@ -19,5 +19,13 @@ jobs:
             node scripts/failingScript.js
             node scripts/successfulScript.js
 
+      - name: Run one failing script
+        uses: nick-fields/retry@v2
+        with:
+          timeout_seconds: 120
+          max_attempts: 10
+          command: |
+            node scripts/failingScript.js
+
       - name: Run another step
         run: echo "Success"
